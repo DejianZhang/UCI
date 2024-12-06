@@ -1,0 +1,18 @@
+relativePath = fullfile('..', '..', 'data', 'ppln跑odl最佳位置.mat');
+load(relativePath);
+c=rect_data(1,1,:);
+cc=reshape(c,1,560);
+T_min = min(cc(:));
+T_max = max(cc(:));
+T_normalized = (cc - T_min) / (T_max - T_min);
+figure;
+ set(gcf,'Position',[100 100 400 300]);
+plot(T_normalized,'LineWidth', 1.5);
+ set(gca, 'FontName', 'Times New Roman','FontWeight','bold', 'FontSize', 14);
+xlabel('Arrival Time(ps)', 'FontSize', 16, 'FontName', 'Times New Roman','FontWeight', 'bold');
+ylabel('Normalized Photon Counts', 'FontSize', 16, 'FontName', 'Times New Roman','FontWeight', 'bold');
+xlim([310 560]);ylim([0 1.1]);
+ax = gca;
+currentPosition = get(ax, 'Position'); 
+newPosition = [0.19 0.19 0.74 0.74];
+set(ax, 'Position', newPosition);
